@@ -80,6 +80,9 @@ const Home = () => {
                 <Card className='mb-2'>
                   <CardBody >
                     <CardTitle tag="h5">
+                      {item.company}
+                    </CardTitle>
+                    <CardTitle tag="h6">
                       {item.title}
                     </CardTitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6">

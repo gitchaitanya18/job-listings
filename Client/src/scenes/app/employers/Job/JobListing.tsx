@@ -16,11 +16,13 @@ const JobListing = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const [id, setId] = useState('');
+  const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [salary, setSalary] = useState('');
 
+  const [companyError, setCompanyError] = useState('');
   const [titleError, setTitleError] = useState('');
   const [descriptionError, setDescriptionError] = useState('');
   const [locationError, setLocationError] = useState('');
@@ -29,6 +31,7 @@ const JobListing = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [initialValues, setInitialValues] = useState({
     id,
+    company,
     title,
     description,
     location,
@@ -54,6 +57,7 @@ const JobListing = () => {
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
+    setCompanyError('');
     setTitleError('');
     setDescriptionError('');
     setLocationError('');
@@ -63,12 +67,18 @@ const JobListing = () => {
   const toggleUpdateModal = () => {
     setModalIsOpen(!modalIsOpen);
     setDescription('')
+    setCompanyError('');
     setTitleError('');
     setDescriptionError('');
     setLocationError('');
     setSalaryError('');
   };
 
+  const handleChangeCompany = (e: any) => {
+    setCompany(e.target.value);
+    setCompanyError('');
+  }
+    
   const handleChangeTitle = (e: any) => {
     setTitle(e.target.value);
     setTitleError('');
@@ -92,6 +102,7 @@ const JobListing = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const jobPayload = {
+      company,
       title,
       description,
       location,
@@ -100,6 +111,11 @@ const JobListing = () => {
 
     let isValid = true;
 
+    if (company.trim() === '') {
+      setCompanyError('Company name is required');
+      isValid = false;
+      }
+      
     if (title.trim() === '') {
       setTitleError('Title is required');
       isValid = false;
@@ -153,6 +169,7 @@ const JobListing = () => {
 
     const jobPayload = {
       id,
+      company,
       title,
       description,
       location,
@@ -161,6 +178,11 @@ const JobListing = () => {
 
     let isValid = true;
 
+    if (company.trim() === '') {
+      setCompanyError('company is required');
+      isValid = false;
+    }
+      
     if (title.trim() === '') {
       setTitleError('Title is required');
       isValid = false;
@@ -209,6 +231,9 @@ const JobListing = () => {
                 <Card className='mb-2'>
                   <CardBody >
                     <CardTitle tag="h5">
+                      {item.company}
+                    </CardTitle>
+                    <CardTitle tag="h6">
                       {item.title}
                     </CardTitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6">
@@ -250,6 +275,17 @@ const JobListing = () => {
           <Col>
             <Form onSubmit={handleSubmit}>
               <FormGroup className='mt-2'>
+                <Label for="company">company</Label>
+                <Input
+                  type="text"
+                  name="company"
+                  id="company"
+                  placeholder="Enter company name"
+                  value={company}
+                  onChange={handleChangeCompany}
+                />
+                {companyError && <Alert color="danger">{companyError}</Alert>}
+                              
                 <Label for="title">Title</Label>
                 <Input
                   type="text"
@@ -310,6 +346,56 @@ const JobListing = () => {
           <ModalHeader toggle={toggleUpdateModal}>Edit Job</ModalHeader>
           <Col>
             <Form onSubmit={handleUpdateSubmit}>
+              <FormGroup className='mt-2'>
+                <Label for="company">company</Label>
+                <Input
+                  type="text"
+                  name="company"
+                  id="company"
+                  placeholder="Enter Company Name"
+                  defaultValue={company}
+                  onChange={handleChangeCompany}
+                />
+                {companyError && <Alert color="danger">{companyError}</Alert>}
+
+
+                <Label for="description">Description</Label>
+                <Input
+                  type="textarea"
+                  name="description"
+                  id="description"
+                  placeholder="Enter job description"
+                  defaultValue={description}
+                  onChange={handleChangeDescription}
+                />
+                {descriptionError && <Alert color="danger">{descriptionError}</Alert>}
+
+
+                <Label for="location">Location</Label>
+                <Input
+                  type="text"
+                  name="location"
+                  id="location"
+                  placeholder="Enter job location"
+                  defaultValue={location}
+                  onChange={handleChangeLocation}
+                />
+                {locationError && <Alert color="danger">{locationError}</Alert>}
+
+                <Label for="salary">Salary</Label>
+                <Input
+                  type="number"
+                  name="salary"
+                  id="salary"
+                  placeholder="Enter job salary"
+                  defaultValue={salary}
+                  onChange={handleChangeSalary}
+                />
+
+                {salaryError && <Alert color="danger">{salaryError}</Alert>}
+
+              </FormGroup>
+                          
               <FormGroup className='mt-2'>
                 <Label for="title">Title</Label>
                 <Input

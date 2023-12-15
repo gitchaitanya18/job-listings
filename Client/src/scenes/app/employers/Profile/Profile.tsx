@@ -16,6 +16,7 @@ const Profile = () => {
   const [userprofile, setProfile] = useState({
     username: '',
     email: '',
+    company: '',
     role: ''
   })
 
@@ -55,6 +56,16 @@ const Profile = () => {
                 name="email"
                 id="email"
                 value={userprofile?.email}
+                readOnly
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="company">company</Label>
+              <Input
+                type="text"
+                name="company"
+                id="company"
+                value={userprofile?.company}
                 readOnly
               />
             </FormGroup>
