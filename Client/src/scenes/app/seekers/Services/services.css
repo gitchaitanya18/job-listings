@@ -1,0 +1,84 @@
+/* services.css */
+
+.services-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.services-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.services-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.services-section button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.services-section button:hover {
+  background-color: #0056b3;
+}
+
+.services-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.services-section p {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.services-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.services-section li {
+  padding: 8px 0;
+}
+
+.services-section strong {
+  color: #007BFF;
+}
+
+.services-section em {
+  font-style: italic;
+  color: #555;
+}
+
+.get-started-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.signup-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
