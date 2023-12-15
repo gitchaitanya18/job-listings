@@ -38,6 +38,9 @@ const ApplicationsSeeker = () => {
               <Card className='mb-2'>
                 <CardBody >
                   <CardTitle tag="h5">
+                    {item?.job_id?.company}
+                  </CardTitle>
+                  <CardTitle tag="h5">
                     {item?.job_id?.title}
                   </CardTitle>
                   <CardSubtitle className="mb-2 text-muted" tag="h6">

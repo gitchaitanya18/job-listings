@@ -16,6 +16,7 @@ const JobManagement = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const [id, setId] = useState('');
+  const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
@@ -97,6 +98,7 @@ const JobManagement = () => {
 
     const jobPayload = {
       id,
+      company,
       title,
       description,
       location,
@@ -147,6 +149,9 @@ const JobManagement = () => {
                 <Card className='mb-2'>
                   <CardBody >
                     <CardTitle tag="h5">
+                      {item.company}
+                    </CardTitle>
+                    <CardTitle tag="h6">
                       {item.title}
                     </CardTitle>
                     <CardSubtitle className="mb-2 text-muted" tag="h6">
